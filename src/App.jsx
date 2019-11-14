@@ -42,19 +42,15 @@ class App extends Component {
 
   loadUser = data => {
     this.setState({
-      id: data.id,
-      name: data.name,
-      email: data.email,
-      entries: data.entries,
-      joined: data.joined
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined: data.joined
+      }
     });
   };
-
-  componentDidMount() {
-    fetch("http://localhost:5000/")
-      .then(response => response.json())
-      .then(console.log);
-  }
 
   calculateFaceLocation = data => {
     const clarifaiFace =

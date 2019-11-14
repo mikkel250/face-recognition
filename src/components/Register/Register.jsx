@@ -36,10 +36,11 @@ class Register extends React.Component {
       .then(user => {
         if (user.id) {
           this.props.loadUser(user);
-          this.props.loadUser(user);
           this.props.onRouteChange("home");
+        } else {
         }
-      });
+      })
+      .catch(err => alert(`name or email already in use. Try another`));
   };
 
   render() {
