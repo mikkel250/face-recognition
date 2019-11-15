@@ -84,13 +84,13 @@ class Register extends React.Component {
                   type="password"
                   name="password"
                   id="password"
-                  onChange={this.onSubmitSignIn}
+                  onChange={this.onPasswordChange}
                 />
               </div>
             </fieldset>
             <div className="">
               <input
-                onClick={() => onRouteChange("home")}
+                onClick={() => this.onSubmitSignIn()}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib pointer"
                 type="submit"
                 value="Register"
