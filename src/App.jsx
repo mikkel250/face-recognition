@@ -42,6 +42,7 @@ class App extends Component {
 
   loadUser = data => {
     this.setState({
+      imageUrl: "",
       user: {
         id: data.id,
         name: data.name,
@@ -82,18 +83,14 @@ class App extends Component {
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
       .then(response => {
         if (response) {
-          fetch("http://localhost:5000/image", {
+          fetch("https://frozen-mesa-98220.herokuapp.com/image", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id: this.state.user.id })
           })
             .then(response => response.json())
             .then(count => {
-              this.setState({
-                users: {
-                  entries: count
-                }
-              });
+              this.setState(Object.assign(this.state.user, { entries: count }));
             });
         }
         this.displayFaceBox(this.calculateFaceLocation(response));

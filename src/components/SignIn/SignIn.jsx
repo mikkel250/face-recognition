@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 class Signin extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Signin extends React.Component {
   };
 
   onSubmitSignIn = () => {
-    fetch("http://localhost:5000/signin", {
+    fetch("https://frozen-mesa-98220.herokuapp.com/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -31,9 +31,10 @@ class Signin extends React.Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
+        } else {
+          alert(`Wrong credentials. Try again.`);
         }
-      })
-      .catch(err => alert(`Wrong credentials. Try again.`));
+      });
   };
 
   render() {
